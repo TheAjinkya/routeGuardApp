@@ -14,10 +14,10 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSave(a,b){
-      console.log("formName", a, b)
+  onSave(form : NgForm){
+      console.log("Form Value", form.form.value)
       // this.shoppingListService.ingredients.push({name : a, amount : b})
-      this.shoppingListService.addIngrediants({name : a, amount: b})
+      this.shoppingListService.addIngrediants({name : form.form.value.name, amount: form.form.value.amount})
   }
   onDelete(){
     this.shoppingListService.ingredients.pop()

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy, AfterContentChecked } from '@angular/core';
-import { Recipe } from './recipe.model';
-import { RecipeService } from './recipe.service';
+// import { Recipe } from './recipe.model';
+// import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'app-recipes',
@@ -10,18 +10,18 @@ import { RecipeService } from './recipe.service';
 export class RecipesComponent implements OnInit, OnChanges, DoCheck,
  AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy  {
 
-  selectedRecipe: Recipe;
+  // selectedRecipe: Recipe;
 
   // @Output() recipeWasSelected = new EventEmitter()
-  constructor(private recipeService : RecipeService) {
+  constructor() {
     console.log("constructor is called")
    }
 
   ngOnInit() {
 
-    this.recipeService.recipeSelected.subscribe((recipe : Recipe)=>{
-      this.selectedRecipe = recipe
-    })
+    // this.recipeService.recipeSelected.subscribe((recipe : Recipe)=>{
+    //   this.selectedRecipe = recipe
+    // })
     console.log("ngOnInit is called")
   }
   
