@@ -3,8 +3,8 @@
     <div class="col-md-12">
         <app-shopping-edit></app-shopping-edit>
         <br>
-        <ul class="list-group" *ngFor="let in of ingredients">
-            <li class="list-group-item">{{in.name}} ({{in.amount}})</li>
+        <ul class="list-group" *ngFor="let in of ingredients; let i = index">
+            <li class="list-group-item" (click)="onEditItem(i)" >{{in.name}} ({{in.amount}})</li>
           </ul>
     </div>
 </div>

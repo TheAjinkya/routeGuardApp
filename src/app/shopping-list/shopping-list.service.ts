@@ -8,6 +8,7 @@ import { Subject, Subscription } from 'rxjs';
 export class ShoppingListService {
   
   ingrediantsChanged = new Subject<Ingredient[]>()
+  startedEditing = new Subject<number>()
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class ShoppingListService {
     return  this.ingredients.slice()
   }
 
+  getSelectedIngredient(id : number){
+    return this.ingredients[id]
+  }
+
   addIngrediants(ingredient : Ingredient){
       this.ingredients.push(ingredient)
       console.log("ingreds", this.ingredients)
@@ -33,6 +38,13 @@ export class ShoppingListService {
     this.ingredients.push(...ingredient)
     this.ingrediantsChanged.next(this.ingredients.slice())
   }
+
+  updateIngredients(index : number, newIngredient : Ingredient){
+      this.ingredients[index] = newIngredient
+      this.ingrediantsChanged.next(this.ingredients.slice())
+  }
+
+
 
   
 }
