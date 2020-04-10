@@ -17,8 +17,8 @@
         </div>
         <div class="row">
             <div class="col-md-5 form-group">
-                <button type="submit" class="btn btn-success" [disabled]="!ingForm.valid"> {{ editMode ? 'Update': 'Add'}} </button> |
-                <button type="button" class="btn btn-danger" (click)="onDelete()"> Delete </button> |
+                <button type="submit" class="btn btn-success" [disabled]="!ingForm.valid"> {{ editMode ? 'Update': 'Add'}} </button> 
+                <button type="button" class="btn btn-danger" *ngIf="editMode" (click)="onDelete()"> Delete </button> 
                 <button type="button" class="btn btn-primary" (click)="onReset(ingForm)"> Clear </button>
         </div>
         </div>

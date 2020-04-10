@@ -14,7 +14,6 @@ export class RecipesComponent implements OnInit, OnChanges, DoCheck,
 
   // @Output() recipeWasSelected = new EventEmitter()
   constructor() {
-    console.log("constructor is called")
    }
 
   ngOnInit() {
@@ -22,30 +21,23 @@ export class RecipesComponent implements OnInit, OnChanges, DoCheck,
     // this.recipeService.recipeSelected.subscribe((recipe : Recipe)=>{
     //   this.selectedRecipe = recipe
     // })
-    console.log("ngOnInit is called")
   }
   
   ngOnChanges(){
-    console.log("ngOnChanges is called")
+    // console.log("ngOnChanges is called")
   }
 
   ngDoCheck(){
-    console.log("Docheck")
   }
 
   ngAfterContentInit(){
-    console.log("ngAfterContentInit")
   }
   ngAfterViewInit(){
-    console.log("ngAfterViewInit")
   }
   ngAfterViewChecked(){
-    console.log("ngAfterViewChecked")
   }
   ngAfterContentChecked(){
-    console.log("ngAfterContentChecked")
   }
   ngOnDestroy(){
-    console.log("ngOnDestroy")
   }
 }

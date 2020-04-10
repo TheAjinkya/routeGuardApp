@@ -28,6 +28,11 @@ export class RecipeDetailComponent implements OnInit {
     
   }
 
+  onDelete(){
+    this.recipeSrc.deleteRecipe(this.id)
+    this.router.navigate(["../"], {relativeTo: this.route})
+  }
+
   onAddToShoppingList(recipe : Recipe){
     console.log("Ingredients Obj", recipe)
     this.recipeSrc.addIngredientsToShoppingList(recipe.ingredients)
@@ -35,6 +40,7 @@ export class RecipeDetailComponent implements OnInit {
 
   routeToEditRecipe(recipe : Recipe){
     console.log("recipe", recipe)
+    console.log("id: ",this.id)
     this.router.navigate(['./edit'], {relativeTo : this.route})
   }
 
