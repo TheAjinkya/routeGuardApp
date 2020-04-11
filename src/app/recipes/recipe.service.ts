@@ -30,6 +30,18 @@ export class RecipeService {
     return this.recipes
   }
 
+  setRecipes(newRecipe){
+
+    let newArray = []
+    for(let data in newRecipe){
+       newArray.push(newRecipe[data]) 
+    }
+    this.recipes = newArray[0]
+    console.log("recipes", this.recipes)
+    this.recipeChanged.next(this.recipes.slice())
+    
+  }
+
   getRecipe(index:number){
     return this.recipes[index];
   }

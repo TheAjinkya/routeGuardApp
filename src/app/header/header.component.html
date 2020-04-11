@@ -12,14 +12,25 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="shoppingList" (click)="onSelect('shopping-list')">Shopping List</a>
       </li>
-      <li class="nav-item dropdown">
+      <ng-template [ngIf]="!authSrc.isAuthenticated()">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="signup" (click)="onSelect('signup')">Register</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="signin" (click)="onSelect('signin')">Sign In</a>
+        </li>
+      </ng-template>
+      <li class="nav-item dropdown" *ngIf="authSrc.isAuthenticated()">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Save Data</a>
-          <a class="dropdown-item" href="#">Fetch Data</a>
+          <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+          <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
         </div>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" (click)="onLogout()">Log Out</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

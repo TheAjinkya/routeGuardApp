@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { DataService } from '../shared/data.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,8 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService : DataService,
+    private authSrc : AuthService) { }
 
  @Output() featureSelected = new EventEmitter<string>()
 
@@ -18,12 +21,30 @@ export class HeaderComponent implements OnInit {
     this.featureSelected.emit(feature)
   }
 
+  onSaveData(){
+      this.dataService.saveData().subscribe(response=>{
+        console.log("The Saved Data", response)
+      },
+      error =>{
+        console.log(error)
+      }
+      )
+  }
+
+  onFetchData(){
+      this.dataService.getData()
+  }
+
   ngOnInit() {
     this.featureSelected.emit("Child Started")
   }
   ngAfterViewInit(){
     console.log(" this.menuName.nativeElement.contentName",  this.menuName.nativeElement.textContent)
    
+  }
+
+  onLogout(){
+    this.authSrc.logout()
   }
 
 }

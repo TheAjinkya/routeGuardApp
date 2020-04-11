@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-root',
@@ -18,5 +19,9 @@ export class AppComponent implements OnInit{
   
   ngOnInit(){
     this.loadedFeature= 'recipe'
+    firebase.initializeApp({
+      apiKey: "AIzaSyBHprKcwBgMaZuX0OczLpKs2YX3EHIo-XM",
+      authDomain: "ng-recipe-book-73f3f.firebaseapp.com",
+    })
   }
 }
