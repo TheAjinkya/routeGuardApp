@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AuthService {
 
-  Token : string
+  Token : string = null
 
   constructor(private router : Router, private route: ActivatedRoute) { }
 
@@ -15,12 +15,16 @@ export class AuthService {
 
   signUpUser(email: string, password: string){
     return firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(function(response){
-      if(response){
-        console.log("response", response)
-        alert("user crated successfully")
-       
-      }
+    .then(response=>{
+      console.log("response", response)
+      alert("user crated successfully")
+      firebase.auth().currentUser.getIdToken().then(
+        (token: string)=>{
+          this.Token = token
+          console.log("token", this.Token)
+          this.router.navigate(['../'], {relativeTo: this.route})
+        }
+      )
     }
     )
     .catch(
@@ -33,17 +37,16 @@ export class AuthService {
 
   signInUser(email, password){
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(function(response){
-      if(response){
-        console.log("response", response)
-        alert("user logged in successfully")
-        firebase.auth().currentUser.getIdToken().then(
-          (token: string)=>{
-            console.log("token", token)
-            this.Token = token
-          }
-        )
-      }
+    .then(response=>{
+      console.log("response", response)
+      alert("user logged in successfully")
+      firebase.auth().currentUser.getIdToken().then(
+        (token: string)=>{
+          this.Token = token
+          console.log("token", this.Token)
+          this.router.navigate(['../'], {relativeTo: this.route})
+        }
+      )
     }
     )
     .catch(
@@ -71,6 +74,7 @@ export class AuthService {
 
   logout(){
       firebase.auth().signOut()
+      this.Token = null
   }
 
 }

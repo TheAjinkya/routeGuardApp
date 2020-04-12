@@ -44,6 +44,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(){
+
+    console.log("Logged Out")
     this.authSrc.logout()
   }
 

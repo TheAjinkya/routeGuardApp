@@ -15,7 +15,7 @@ export class DataService {
   getData(){
 
      const token = this.authSrc.getToken()
-    return this.http.get('https://ng-recipe-book-73f3f.firebaseio.com/recipes.json' + token).subscribe(
+    return this.http.get('https://ng-recipe-book-73f3f.firebaseio.com/recipes.json?auth=' + token).subscribe(
       (response)=>{
         this.rspSrc.setRecipes(response)
         console.log(response)
