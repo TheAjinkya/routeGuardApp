@@ -9,7 +9,12 @@ export class AuthGuardService implements CanActivate {
   
   constructor(private authSrc : AuthService) { }
   canActivate(route : ActivatedRouteSnapshot, state :  RouterStateSnapshot){
-      return this.authSrc.isAuthenticated()
+    if(this.authSrc.isAuthenticated()){
+      return true
+    } else{
+      alert("Youre not authorised to visit it. SignIn first!")
+      return false;
+    } 
   }
 
 }

@@ -5,11 +5,11 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="name">Username</label><span style="color: red;">*</span>
-                        <input type="email" for="email" name="username" class="form-control" ngModel required>
+                        <input type="text" [(ngModel)]="email" for="email" name="username" class="form-control" ngModel required>
                     </div>
                     <div class="form-group">
                         <label for="name">Password</label><span style="color: red;">*</span>
-                        <input type="password" for="password" name="password" [minlength]="6" class="form-control" ngModel required>
+                        <input type="text" for="password"  [(ngModel)]="password" name="password" [minlength]="6" class="form-control" ngModel required>
                         <div *ngIf="!signUpForm.valid">Must be of atleast 6 characters</div>
                     </div>
                     <div class="form-group">

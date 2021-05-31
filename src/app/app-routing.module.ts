@@ -27,7 +27,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'shoppingList', component: ShoppingListComponent,
+    path: 'shoppingList', component: ShoppingListComponent, canActivate : [AuthGuardService], 
     children: [
       { path: 'shoppingedit', component: ShoppingListService },
     ]

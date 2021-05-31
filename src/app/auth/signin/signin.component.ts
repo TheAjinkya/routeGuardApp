@@ -10,6 +10,8 @@ import { AuthService } from '../auth.service';
 export class SigninComponent implements OnInit {
 
   constructor(private authSrc : AuthService) { }
+  password:string ='abcdefg'
+  email:string='jourdan300@gmail.com'
 
   ngOnInit() {
   }
